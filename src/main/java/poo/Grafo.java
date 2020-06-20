@@ -117,6 +117,11 @@ public class Grafo {
             }
         }
     }
+
+    public String gerarSubGrafo(){
+        return "";
+    }
+
     // Gera uma String contendo os Arcos entre os nós do Grafo
     public String arcosEntreNosdoGrafo(){
         String toReturn="";
@@ -151,7 +156,7 @@ public class Grafo {
     public String exportarFormatoDot(){
         return "";
     }
-    public void salvarDiagramaNoDisco(String nomeDoArquivo, ArrayList<Node> nodes) {
+    public void salvarDiagramaNoDisco(String nomeDoArquivo, ArrayList<Grafo> grafo) {
 
     }
     public void lerDiagramaDoDisco(String nomeDoArquivo) {
