@@ -65,15 +65,4 @@ graph rede{
 	}
 
 }
-graph rede{
-	label = "Rede"
-	labelloc= t;
-	rankdir= TB;
 
-	node [labelloc=c fontsize=10 shape=none]
-	edge [color=black]
-	desktop1 [label="dekstop" image="../img/desktop.png" ]
-
-
-
-}
