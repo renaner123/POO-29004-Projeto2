@@ -221,6 +221,7 @@ public class Principal {
                     System.out.println("1. Exportar diagrama no formato .Dot");
                     System.out.println("2. Salvar diagrama em disco");
                     System.out.println("3. Ler diagrama do disco");
+                    System.out.println("0. Menu principal");
                     op = teclado_int.nextInt();
                     Diagrama diagrama = new Diagrama(grafo);
                     if(op==1){
@@ -239,6 +240,8 @@ public class Principal {
                         args = teclado_string.nextLine();
                         diagrama.lerDiagramaDoDisco(args);
                         grafo = diagrama.getGrafos();
+                    }else if(op == 0){
+
                     }
 
                 }else if(op == 3){

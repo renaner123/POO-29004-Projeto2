@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class SubGrafo implements Serializable {
     private static final String LABELLOCPADRAOSUBGRAFO = "b";
     private static final String STYLEPADRAO = "filled";
-    private static final String BGCOLORPADRAO = "green";
+    private static final String BGCOLORPADRAO = "white";
 
     ArrayList<String> subGraph = new ArrayList<>();
     private String labelLoc;
