@@ -8,9 +8,10 @@
 ![Diagrama](../doc/campus.png)
 
 > Gerando o diagrama proposto
+>
  + Inserindo nós
  
-   ![](Gifs/Inserindo_Nos.gif)
+  ![](Gifs/Inserindo_Nos.gif)
    
  + Inserindo arcos
  
@@ -30,4 +31,4 @@
   
  + Gerando diagrama com Graphviz
  
-  ![](Gifs/gerando_Arcos.gif)
+  ![](Gifs/gerando_Diagrama.gif)
