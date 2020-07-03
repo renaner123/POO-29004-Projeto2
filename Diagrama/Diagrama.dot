@@ -1,0 +1,79 @@
+graph rede{
+	label = "Rede"
+	labelloc= t;
+	rankdir= TB;
+
+	node [labelloc=c fontsize=10 shape=none]
+	edge [color=black]
+	desktop1 [label="desktop" image="../img/desktop.png" ]
+	wan1 [label="Internet" image="../img/cloud.png" ]
+	router1 [label="router HA" image="../img/blue-router.png" ]
+	firewall1 [label="Firewall 1" image="../img/firewall.png" ]
+	firewall2 [label="Firewall 2" image="../img/firewall.png" ]
+	sw1 [label="cisco 3850" image="../img/switch.png" ]
+	sw2 [label="cisco 3560" image="../img/switch.png" ]
+	sw3 [label="outro switch" image="../img/switch.png" ]
+	sw4 [label="switch lab" image="../img/switch.png" ]
+	sw5 [label="camera switch" image="../img/switch.png" ]
+	server1 [label="WWW server" image="../img/network-server-generic.png" ]
+	server2 [label="VM server" image="../img/network-server-generic.png" ]
+	desktop2 [label="deskto" image="../img/desktop.png" ]
+	desktop3 [label="desktop" image="../img/desktop.png" ]
+	sw6 [label="camera server" image="../img/switch.png" ]
+	ipCamera1 [label="IP camera" image="../img/ip-camera.png" ]
+
+	wan1 -- {router1}
+	router1 -- {firewall1 firewall2}
+	firewall1 -- {sw1 sw2} [color=blue]
+	firewall2 -- {sw1 sw2} [color=red]
+	sw1 -- {sw3}
+	sw2 -- {sw3}
+	sw3 -- {sw4 sw5 server1 server2}
+	sw4 -- {desktop1 desktop2 desktop3} [color=black]
+	sw5 -- {sw6}
+	sw6 -- {ipCamera1}
+
+	subgraph cluster_labs{
+		label=Labs
+		labelloc=b
+		style=filled
+		bgcolor=white
+
+		sw4
+		desktop1
+		desktop2
+		desktop3
+	}
+	subgraph cluster_cftv{
+		label=CFTV
+		labelloc=b
+		style=filled
+		bgcolor=white
+
+		sw5
+		sw6
+		ipCamera1
+	}
+	subgraph cluster_dmz{
+		label=DMZ
+		labelloc=b
+		style=filled
+		bgcolor=white
+
+		server1
+		server2
+	}
+
+}
+graph rede{
+	label = "Rede"
+	labelloc= t;
+	rankdir= TB;
+
+	node [labelloc=c fontsize=10 shape=none]
+	edge [color=black]
+	desktop1 [label="dekstop" image="../img/desktop.png" ]
+
+
+
+}
