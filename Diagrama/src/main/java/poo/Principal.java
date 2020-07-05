@@ -23,12 +23,16 @@ public class Principal {
         String args = "";
 
         System.out.println("Bem vindo ao gerador de diagramas de rede");
-        System.out.println("Ele possui as seguintes restrições de associações");
+        System.out.println("Ele possui as seguintes restrições de associações, onde N está definido como 10");
         System.out.println("-- O nó endpoint (desktop, câmera IP, servidor) poderá estar associado a no máximo a um outro nó");
         System.out.println("-- O nó roteador poderá estar associado com 2 ou N outros nós");
         System.out.println("-- O nó firewall poderá estar associado com 2 ou N outros nós");
         System.out.println("-- O nó switch (comutador) poderá estar associado com 1 ou N outros nós");
         System.out.println("-- Nó Internet poderá estar associado com 1 ou N outros nós\n");
+
+        System.out.println("Observação: Para fazer com que o diagrama tenha as imagens de cada nó, é necessário deixar a pasta img" +
+                "no diretório onde será salvo o arquivo .dot\n");
+
 
         while (true) {
             System.out.println("1. Grafo");
@@ -56,6 +60,7 @@ public class Principal {
                         System.out.println("3. Adicionar internet");
                         System.out.println("4. Adicionar roteador");
                         System.out.println("5. Adicionar switch");
+                        System.out.println("0. Menu principal");
                         op = teclado_int.nextInt();
                         if(op==1){
                             System.out.println("1. Adicionar desktop");
@@ -67,34 +72,43 @@ public class Principal {
                                 System.out.println("Digite um label para o nó");
                                 args = teclado_string.nextLine();
                                 grafo.addNode(args,EnumNodeNames.desktop);
+                                System.out.println("Nó criado");
 
                             }else if(op==2){
                                 System.out.println("Digite um label para o nó");
                                 args = teclado_string.nextLine();
                                 grafo.addNode(args,EnumNodeNames.ipCamera);
+                                System.out.println("Nó criado");
 
                             }else if(op == 3){
                                 System.out.println("Digite um label para o nó");
                                 args = teclado_string.nextLine();
                                 grafo.addNode(args,EnumNodeNames.server);
+                                System.out.println("Nó criado");
                             }
 
                         }else if(op==2){
                             System.out.println("Digite um label para o nó");
                             args = teclado_string.nextLine();
                             grafo.addNode(args,EnumNodeNames.firewall);
+                            System.out.println("Nó criado");
                         }else if(op==3){
                             System.out.println("Digite um label para o nó");
                             args = teclado_string.nextLine();
                             grafo.addNode(args,EnumNodeNames.wan);
+                            System.out.println("Nó criado");
                         }else if(op==4){
                             System.out.println("Digite um label para o nó");
                             args = teclado_string.nextLine();
                             grafo.addNode(args,EnumNodeNames.router);
+                            System.out.println("Nó criado");
                         }else if(op==5){
                             System.out.println("Digite um label para o nó");
                             args = teclado_string.nextLine();
                             grafo.addNode(args,EnumNodeNames.sw);
+                            System.out.println("Nó criado");
+                        }else if(op == 0){
+
                         }
 
                     } else if (op == 2) {
@@ -103,20 +117,21 @@ public class Principal {
                        String[] destino;
                        System.out.println("Digite nó de origem");
                        origem = teclado_string.nextLine();
-                       System.out.println("Digite nó(s) de destino separado por vírgula(,) Ex.: router1,war1");
+                       System.out.println("Digite nó(s) de destino separado por vírgula(,) caso tenha mais de um Ex.: router1,wan1");
                        args = teclado_string.nextLine();
                        destino = args.split(",");
                        System.out.println(grafo.addNodeOrigemToDestino(origem,destino));
 
                     } else if (op == 3) {
+                       grafo.mostrarNodesSalvos();
                        String label="";
                        String[] destino;
                        System.out.println("Digite label para o subgrafo");
                        label = teclado_string.nextLine();
-                       System.out.println("Digite nó(s)  do subgrafo separado por vírgula(,) Ex.: router1,war1");
+                       System.out.println("Digite nó(s)  do subgrafo separado por vírgula(,) caso tenha mais de um Ex.: router1,wan1");
                        args = teclado_string.nextLine();
                        destino = args.split(",");
-                       grafo.addSubGrafo(label,destino);
+                       System.out.println(grafo.addSubGrafo(label,destino));
 
                     } else if (op == 4) {
                        Node aux;
@@ -126,6 +141,7 @@ public class Principal {
                        System.out.println(("2. Alterar cor"));
                        System.out.println("3. Alterar tamanho da fonte");
                        System.out.println("4. Remover nó");
+                       System.out.println("0. Menu principal");
                        op = teclado_int.nextInt();
 
                        for(Node run : grafo.getNos()){
@@ -147,12 +163,15 @@ public class Principal {
                        }
                        if(op==4){
                            grafo.removerNode(args);
+                       }else if(op==0){
+
                        }
                     }else if (op == 5) {
                        System.out.println("Digite o nome do nó a ser editado os arcos");
                        args = teclado_string.nextLine();
                        System.out.println("1. Alterar cor do arco");
                        System.out.println(("2. Remover arcos do nó"));
+                       System.out.println("0. Menu principal");
                        op = teclado_int.nextInt();
                        if(op==1) {
                            for (Node aux : grafo.getNos()) {
@@ -169,6 +188,8 @@ public class Principal {
                                    aux.setArcos(auxClear);
                                }
                            }
+                       }else if(op==0){
+
                        }
                     } else if (op == 6) {
                        System.out.println("Digite o nome do subgrafo a ser editado");
@@ -178,6 +199,7 @@ public class Principal {
                        System.out.println("3. Alterar bgcolor");
                        System.out.println("4. Alterar label");
                        System.out.println("5. Remover subgrafo");
+                       System.out.println("0. Menu principal");
                        op = teclado_int.nextInt();
                        for(SubGrafo aux : grafo.getSubGraph()){
                            if(aux.getLabel().equals(args)){
@@ -200,6 +222,8 @@ public class Principal {
                                    args = teclado_string.nextLine();
                                    aux.setLabel(args);
                                }
+                           }if(op==0){
+
                            }
                        }
                        if(op==5){

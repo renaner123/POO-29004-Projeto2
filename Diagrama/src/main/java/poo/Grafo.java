@@ -79,11 +79,17 @@ public class Grafo implements Serializable{
                 if (verificaNodeExiste(nodes[i]));
                 else return false;
             }
+
             subGraph.add(new SubGrafo(label, nodes));
         }else{
-            if (verificaNodeExiste(nodes[0])) subGraph.add(new SubGrafo(label, nodes));
+            if (verificaNodeExiste(nodes[0])) {
+                subGraph.add(new SubGrafo(label, nodes));
+                return true;
+            }
+
+
         }
-        return true;
+        return false;
     }
 
     /**
